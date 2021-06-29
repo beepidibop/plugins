@@ -2,8 +2,6 @@ import PromiseQueue from 'https://cdn.skypack.dev/p-queue';
 import Serde  from 'https://cdn.skypack.dev/@darkforest_eth/serde';
 import { CONTRACT_PRECISION } from 'https://cdn.skypack.dev/@darkforest_eth/constants';
 
-let gasPriceSet = 1000000500;
-
 let moveSnarkQueue;
 if (window.moveSnarkQueue === undefined) {
   moveSnarkQueue = new PromiseQueue({ concurrency: 1 });
@@ -103,7 +101,7 @@ async function send(actionId, snarkArgs) {
       df.contractsAPI.coreContract,
       args,
       {
-        gasPrice: gasPriceSet,
+        gasPrice: 1000000500,
         gasLimit: 2000000,
       },
       undefined // no snark logs
